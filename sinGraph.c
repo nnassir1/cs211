@@ -2,7 +2,7 @@
 #include <math.h>
 
 int main() {
-	int rows;
+	int row;
 	int maxRow = 20;
 	int col;
 	int maxCols = 60;
@@ -12,21 +12,20 @@ int main() {
 	int ymin = -1;
 	//float dx = (xmax-xmin)/col;
 	//float dy = (ymax-ymin)/rows;
-	
-	for(rows=maxRow-1; rows>=0; rows--){
-		float dy = (ymax-ymin)/rows;
-		float ly = ymin + (dy*rows);
+	for(row=maxRow-1; row>=0; row--){
+		float dy = (ymax-ymin)/maxRow;
+		float ly = ymin + (dy*row);
 		for(col=0; col<maxCols;col++){
-			float dx = (xmax-xmin)/col;
+			float dx = (xmax-xmin)/maxCols;
 			float lx = xmin + (dx*col);
 			float x = lx + dx/2;
 			float y = sin(x);
 			if((ly<=y) && (y<ly+dy)){
 				printf("*");}
 			else{
-				if((x == 0.0) && (rows == 0)){
+				if((x == 0.0) && (row == 0)){
 					printf("+");}
-				else if ((x==0.0) && (rows != 0)){
+				else if ((x==0.0) && (row != 0)){
 					printf("|");}
 				else if (y==0.0){
 					printf("-");}
